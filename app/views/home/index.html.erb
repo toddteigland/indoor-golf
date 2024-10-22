@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-center align-items-center">
+    <h1>Welcome to the 2024/2025 indoor golf season!</h1>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive mb-4">
+      <table class="table table-striped table-bordered mb-4">
+        <thead>
+          <tr>
+            <th>Golfer</th>
+            <th>Cap</th>
+            <th>R1</th>
+            <th>R2</th>
+            <th>R3</th>
+            <th>R4</th>
+            <th>R5</th>
+            <th>R6</th>
+            <th>Total</th>
+            <th>Net</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @standings.each_with_index do |standing| %>
+            <tr class="h-25">
+              <td><%= standing.email.split('@').first %></td>
+              <td><%= standing.handicap %></td>
+              <td><%= standing.round_1 || 0 %>/<strong><%= standing.round_1_net || 0 %></strong></td>
+              <td><%= standing.round_2 || 0 %>/<strong><%=standing.round_2_net || 0 %></strong></td>
+              <td><%= standing.round_3 || 0 %>/<strong><%=standing.round_3_net || 0 %></strong></td>
+              <td><%= standing.round_4 || 0 %>/<strong><%=standing.round_4_net || 0 %></strong></td>
+              <td><%= standing.round_5 || 0 %>/<strong><%=standing.round_5_net || 0 %></strong></td>
+              <td><%= standing.round_6 || 0 %>/<strong><%=standing.round_6_net || 0 %></strong></td>
+              <td><%= standing.total_score %></td>
+              <td><strong><%= standing.total_net_score%></strong></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= button_to 'Enter A new score', new_score_path, method: :get, class:"btn btn-success mb-2" %>
+    <%= button_to 'View my scores', scores_path, method: :get, class:"btn btn-primary" %>
+  </div>
+</div>

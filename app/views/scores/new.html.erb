@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+<div class="card">
+  <div class="card-header">
+    <h3>New Score entry page</h3>
+  </div>
+  <div class="card-body">
+    <% if @score.errors.any? %>
+      <div style="color: red;">
+        <h4><%= pluralize(@score.errors.count, "error") %> prohibited this score from being saved:</h4>
+        <ul>
+          <% @score.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="mb-2">
+      <%= render 'score_form' %>
+    </div>
+    <%= button_to 'Return home', root_path, method: :get, class:"btn btn-primary" %>
+  </div>
+</div>

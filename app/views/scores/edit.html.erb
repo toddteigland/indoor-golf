@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Edit Score</h2>
+  </div>
+  <div class="card-body">
+    <%= render 'score_form', score: @score %>
+    <%= button_to 'View my scores', scores_path, method: :get, class:"btn btn-primary mt-2" %>
+  </div>
+</div>

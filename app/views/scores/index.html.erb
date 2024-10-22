@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+<div class="card">
+  <div class="card-header">
+    <h2>My Scores</h2>
+  </div>
+  <div class="card-body">
+    <% if @scores.empty? %>
+      <h4>Please play a round and enter your score</h4>
+      <%= button_to 'New Score', new_score_path, method: :get %>
+    <% else %>
+      <div class="table-responsive mb-4">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Rnd#</th>
+              <th>Course</th>
+              <th>Date</th>
+              <th>Score</th>
+              <th>Net</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @scores.each do |score| %>
+              <tr>
+                <td><%= score.round.round_number %></td>
+                <td><%= score.round.course %></td>
+                <td><%= score.date_played.strftime("%b %d") %></td>
+                <td><%= score.score %></td>
+                <td><strong><%= score.score - score.user.handicap %></strong></td>
+                <td><%= button_to 'Edit', edit_score_path(score), method: :get, class:"btn btn-warning btn-sm" %></td>
+                <td><%= button_to 'Delete', score, method: :delete, class:"btn btn-danger btn-sm" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <%= button_to 'Add new score', new_score_path, method: :get, class:"btn btn-success mb-2" %>
+      <%= button_to 'Standings', root_path, method: :get, class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
