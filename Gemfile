@@ -9,7 +9,8 @@ gem "rails", "~> 7.1.4"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 1.4"
+# gem "sqlite3", ">= 1.4"
+gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -72,3 +73,4 @@ gem "devise", "~> 4.9"
 gem 'bootstrap', '~> 5.3.3'
 gem 'dartsass-sprockets'
 gem 'jquery-rails'
+gem 'dotenv-rails', groups: [:development, :test]

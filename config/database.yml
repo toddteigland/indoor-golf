@@ -20,6 +20,19 @@ test:
   <<: *default
   database: storage/test.sqlite3
 
+# production:
+#   <<: *default
+#   database: storage/production.sqlite3
+
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: 5
+#   database: indoor_golf_db
+#   username: tiggles
+#   password: M46KW5xrZ2FV3f5tkbljbMEc0oZEQ05d
+#   host: dpg-csc207jtq21c73ctkhcg-a
+
 production:
-  <<: *default
-  database: storage/production.sqlite3
+<<: *default
+url: <%= ENV['DATABASE_URL'] %>
