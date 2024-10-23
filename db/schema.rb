@@ -11,12 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_10_21_235248) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "rounds", force: :cascade do |t|
     t.integer "round_number"
     t.string "course"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "score_id"
+    t.bigint "score_id"
     t.index ["score_id"], name: "index_rounds_on_score_id"
   end
 
@@ -26,7 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_21_235248) do
     t.integer "round_id"
     t.integer "score"
     t.date "date_played"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
