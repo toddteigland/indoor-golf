@@ -36,8 +36,27 @@
                   <% end %>
                 </td>
                 <td><%= button_to 'Edit', edit_score_path(score), method: :get, class:"btn btn-warning btn-sm" %></td>
-                <td><%= button_to 'Delete', score, method: :delete, class:"btn btn-danger btn-sm" %></td>
+                <td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal-<%= score.id %>">
+                    Delete
+                  </button></td>
               </tr>
+              <div class="modal fade" id="deleteConfirmModal-<%= score.id %>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+                <div class="modal-dialog">
+                  <div class="modal-content d-flex flex-column">
+                    <div class="modal-header">
+                      <h1 class="modal-title">Delete Confirmation</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <h3>Are you sure you want to delete this score?</h3>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <%=button_to 'Delete', score, method: :delete, class:"btn btn-danger" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <% end %>
           </tbody>
         </table>
