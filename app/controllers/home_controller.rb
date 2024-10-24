@@ -17,7 +17,7 @@ before_action :authenticate_user!
         MAX(CASE WHEN rounds.round_number = 4 THEN scores.score ELSE 0 END) AS round_4,
         MAX(CASE WHEN rounds.round_number = 5 THEN scores.score ELSE 0 END) AS round_5,
         MAX(CASE WHEN rounds.round_number = 6 THEN scores.score ELSE 0 END) AS round_6,
-        MAX(CASE WHEN rounds.round_number = 1 THEN scores.score - users.handicap ELSE 0 END) AS round_1_net,
+        MAX(CASE WHEN rounds.round_number = 1 THEN ROUND(scores.score - (users.handicap * .778),0) ELSE 0 END) AS round_1_net,
         MAX(CASE WHEN rounds.round_number = 2 THEN scores.score - users.handicap ELSE 0 END) AS round_2_net,
         MAX(CASE WHEN rounds.round_number = 3 THEN scores.score - users.handicap ELSE 0 END) AS round_3_net,
         MAX(CASE WHEN rounds.round_number = 4 THEN scores.score - users.handicap ELSE 0 END) AS round_4_net,

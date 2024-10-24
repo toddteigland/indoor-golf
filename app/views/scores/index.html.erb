@@ -28,7 +28,13 @@
                 <td><%= score.round.course %></td>
                 <td><%= score.date_played.strftime("%b %d") %></td>
                 <td><%= score.score %></td>
-                <td><strong><%= score.score - score.user.handicap %></strong></td>
+                <td>
+                  <% if score.round.round_number == 1 %>
+                    <%= (score.score - (score.user.handicap * 0.778)).round(0) %> <!-- Adjusted net score for round 1 -->
+                  <% else %>
+                    <%= score.score - score.user.handicap %> <!-- Full handicap for other rounds -->
+                  <% end %>
+                </td>
                 <td><%= button_to 'Edit', edit_score_path(score), method: :get, class:"btn btn-warning btn-sm" %></td>
                 <td><%= button_to 'Delete', score, method: :delete, class:"btn btn-danger btn-sm" %></td>
               </tr>

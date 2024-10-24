@@ -24,7 +24,7 @@
             <tr class="h-25">
               <td><%= standing.email.split('@').first %></td>
               <td><%= standing.handicap %></td>
-              <td><%= standing.round_1 || 0 %>/<strong><%= standing.round_1_net || 0 %></strong></td>
+              <td><%= standing.round_1 || 0 %>/<strong><%= standing.round_1_net.round(0) || 0 %></strong></td>
               <td><%= standing.round_2 || 0 %>/<strong><%=standing.round_2_net || 0 %></strong></td>
               <td><%= standing.round_3 || 0 %>/<strong><%=standing.round_3_net || 0 %></strong></td>
               <td><%= standing.round_4 || 0 %>/<strong><%=standing.round_4_net || 0 %></strong></td>
@@ -47,6 +47,7 @@
   </div>
   <div class="card-body">
     <ul>
+      <li class="text-danger">Round one is 78% of cap due to playing 14 holes</li>
       <li>Entry fee is <strong>$150</strong></li>
       <ul>Point breakdown(based on 6 golfers)
         <li>1st place - 6</li>
