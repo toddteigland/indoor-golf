@@ -14,7 +14,7 @@ Round.destroy_all
 
 # Create new course records
 Round.create([
-  { round_number: 1, course: 'TBD Course 1' },
+  { round_number: 1, course: 'Fairmont Chateau Whistler GC' },
   { round_number: 2, course: 'TBD Course 2' },
   { round_number: 3, course: 'TBD Course 3' },
   { round_number: 4, course: 'TBD Course 4' },
