@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center border-bottom mt-4 mb-4 pb-4 background-pixel">
+<div class="container d-flex justify-content-center border-bottom mt-4 mb-4 pb-4">
   <div>
     <button class='btn btn-primary' data-bs-toggle="offcanvas" type="button" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
       <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
@@ -11,9 +11,9 @@
       <h3><%= current_user.email %></h3>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-      <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class:'btn btn-warning mb-2' %>
-      <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:'btn btn-danger btn-sm'%>
+    <div class="offcanvas-body d-flex flex-column align-items-center">
+      <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class:'btn btn-warning mb-2 shadow' %>
+      <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:'btn btn-danger btn-sm shadow'%>
     <% end %>
   </div>
 </div>

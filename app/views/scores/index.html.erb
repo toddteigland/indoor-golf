@@ -1,12 +1,12 @@
 <p style="color: green"><%= notice %></p>
-<div class="card">
+<div class="card shadow">
   <div class="card-header d-flex justify-content-center">
     <h2>My Scores</h2>
   </div>
   <div class="card-body">
     <% if @scores.empty? %>
       <h4>Please play a round and enter your score</h4>
-      <%= button_to 'New Score', new_score_path, method: :get %>
+      <%= button_to 'New Score', new_score_path, method: :get, class:"btn btn-success m-2" %>
     <% else %>
       <div class="table-responsive mb-4">
         <table class="table table-bordered">
