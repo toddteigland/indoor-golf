@@ -1,7 +1,7 @@
 <div class="mb-3">
   <%=  form_for @score, data: {turbo: false} do |f| %>
     <div class="form-floating mt-2">
-      <%= f.collection_select :round_id, Round.all, Round.order('round_number ASC'), :id, :course, {prompt: 'Select a round'}, {class: 'form-select'}  %>
+      <%= f.collection_select :round_id, Round.all, Round.order('round_number ASC'), :id, :course, {class: 'form-select'}  %>
       <%= f.label :course, class:"form-label" %>
     </div>
     <div class="form-floating mt-2">
