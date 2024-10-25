@@ -71,8 +71,5 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
-gem 'bootstrap', '~> 5.3.3'
-gem 'dartsass-sprockets'
 gem 'jquery-rails'
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'cssbundling-rails'
