@@ -1,7 +1,6 @@
-<p style="color: green"><%= notice %></p>
 <div class="card shadow">
-  <div class="card-header d-flex justify-content-center">
-    <h2>My Scores</h2>
+  <div class="card-header d-flex justify-content-center bg-info">
+    <h2>All Scores</h2>
   </div>
   <div class="card-body">
     <% if @scores.empty? %>
@@ -13,6 +12,7 @@
           <thead>
             <tr>
               <th>Rnd#</th>
+              <th>User</th>
               <th>Course</th>
               <th>Date</th>
               <th>Score</th>
@@ -25,6 +25,7 @@
             <% @scores.each do |score| %>
               <tr>
                 <td><%= score.round.round_number %></td>
+                <td><%= score.user.email %></td>
                 <td><%= score.round.course %></td>
                 <td><%= score.date_played.strftime("%b %d") %></td>
                 <td><%= score.score %></td>
@@ -52,7 +53,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      <%= button_to 'Delete', score, method: :delete, class:"btn btn-danger" %>
+                      <%=button_to 'Delete', score, method: :delete, class:"btn btn-danger" %>
                     </div>
                   </div>
                 </div>

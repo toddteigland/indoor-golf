@@ -31,7 +31,9 @@
               <td><%= standing.round_5 || 0 %>/<strong><%=standing.round_5_net || 0 %></strong></td>
               <td><%= standing.round_6 || 0 %>/<strong><%=standing.round_6_net || 0 %></strong></td>
               <td><%= standing.total_score %></td>
-              <td><strong><%= standing.total_net_score%></strong></td>
+              <% total_net = standing.round_1_net + standing.round_2_net + standing.round_3_net +
+                         standing.round_4_net + standing.round_5_net + standing.round_6_net%>
+              <td><strong><%= total_net%></strong></td>
             </tr>
           <% end %>
         </tbody>
@@ -39,6 +41,9 @@
     </div>
     <%= button_to 'Enter A new score', new_score_path, method: :get, class:"btn btn-success mb-2" %>
     <%= button_to 'View my scores', scores_path, method: :get, class:"btn btn-primary" %>
+    <% if admin? %>
+      <%= button_to 'View all scores', admin_scores_scores_path, method: :get, class:"btn btn-info mt-2" %>
+    <% end %>
   </div>
 </div>
 <div class="card m-4 shadow-lg">

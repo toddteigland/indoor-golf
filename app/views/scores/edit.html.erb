@@ -5,5 +5,8 @@
   <div class="card-body">
     <%= render 'score_form', score: @score %>
     <%= button_to 'View my scores', scores_path, method: :get, class:"btn btn-primary mt-2" %>
+    <% if admin? %>
+      <%= button_to 'View all scores', admin_scores_scores_path, method: :get, class:"btn btn-info mt-2" %>
+    <% end %>
   </div>
 </div>

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :rounds
-  resources :scores
+  resources :scores do
+    collection do
+      get :admin_scores
+    end
+  end
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

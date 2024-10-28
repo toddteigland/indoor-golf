@@ -6,14 +6,23 @@
   </div>
 </div>
 <div class="offcanvas offcanvas-top h-25" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header bg-body-tertiary">
-    <% if user_signed_in? %>
+  <% if user_signed_in? %>
+    <div class="offcanvas-header bg-body-tertiary">
       <h3><%= current_user.email %></h3>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column align-items-center background-pixel">
-      <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class:'btn btn-warning mb-2 shadow' %>
+      <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class:'btn btn-warning mb-4 btn-lg shadow' %>
       <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:'btn btn-danger btn-sm shadow'%>
+    <% else %>
+      <div class="offcanvas-header bg-body-tertiary d-flex justify-content-center">
+        <h3>Please log in or sign up</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column align-items-center background-pixel">
+        <%= button_to "Log In", new_user_session_path, method: :get, class: 'btn btn-success mb-4 shadow'%>
+        <%= button_to "Sign Up", user_registration_path, method: :get, class: 'btn btn-success mb-4 shadow'%>
+      </div>
     <% end %>
   </div>
 </div>

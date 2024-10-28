@@ -1,7 +1,12 @@
 class ScoresController < ApplicationController
-  
+  before_action :verify_admin, only: [:admin_scores]
+
   def index
     @scores = current_user.scores.joins(:round).order('rounds.round_number')
+  end
+  
+  def admin_scores
+    @scores = Score.all.joins(:round, :user).order('rounds.round_number')
   end
 
   def new
@@ -42,6 +47,12 @@ class ScoresController < ApplicationController
 
   def score_params 
     params.require(:score).permit(:round_id, :score, :user_id, :date_played)
+  end
+
+  private
+  
+  def verify_admin
+    redirect_to root_path, alert: "Not authorized" unless admin?
   end
 
 end
