@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_21_235248) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_13_211033) do
   create_table "rounds", force: :cascade do |t|
     t.integer "round_number"
     t.string "course"
@@ -27,6 +27,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_21_235248) do
     t.integer "score"
     t.date "date_played"
     t.integer "user_id"
+    t.integer "net_score"
+    t.decimal "points", precision: 4, scale: 1
     t.index ["user_id"], name: "index_scores_on_user_id"
   end
 

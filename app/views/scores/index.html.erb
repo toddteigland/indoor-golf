@@ -28,13 +28,7 @@
                 <td><%= score.round.course %></td>
                 <td><%= score.date_played.strftime("%b %d") %></td>
                 <td><%= score.score %></td>
-                <td>
-                  <% if score.round.round_number == 1 %>
-                    <%= (score.score - (score.user.handicap * 0.778)).round(0) %> <!-- Adjusted net score for round 1 -->
-                  <% else %>
-                    <%= score.score - score.user.handicap %> <!-- Full handicap for other rounds -->
-                  <% end %>
-                </td>
+                <td><%= score.net_score %></td>
                 <td><%= button_to 'Edit', edit_score_path(score), method: :get, class:"btn btn-warning btn-sm" %></td>
                 <td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal-<%= score.id %>">
                     Delete
@@ -52,7 +46,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      <%= button_to 'Delete', score, method: :delete, class:"btn btn-danger" %>
+                      <%= button_to 'Delete', score, method: :delete, class: "btn btn-danger", data: { turbo_method: :delete } %>
                     </div>
                   </div>
                 </div>
