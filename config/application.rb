@@ -16,6 +16,17 @@ module IndoorGolf
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    config.after_initialize do
+      unless ActiveRecord::Migrator.needs_migration?
+        puts "Running pending migrations..."
+        ActiveRecord::MigrationContext.new(
+          ActiveRecord::Migrator.migrations_paths,
+          ActiveRecord::SchemaMigration
+        ).migrate
+      end
+    end
+
+    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
