@@ -6,10 +6,12 @@ class ScoresController < ApplicationController
     @scores = current_user.scores.joins(:round).order('rounds.round_number')
 
   end
+#-----------------------------------------------------------------------------------------------------------------------------
   
   def admin_scores
     @scores = Score.all.joins(:round, :user).order('rounds.round_number')
   end
+#-----------------------------------------------------------------------------------------------------------------------------
 
   def new
     @score = Score.new
@@ -28,6 +30,7 @@ class ScoresController < ApplicationController
       end
     end
   end
+#-----------------------------------------------------------------------------------------------------------------------------
 
   def edit
     @score = Score.find(params[:id])
@@ -53,6 +56,7 @@ class ScoresController < ApplicationController
       end
     end
   end
+#-----------------------------------------------------------------------------------------------------------------------------
 
   def destroy
     @score = Score.find(params[:id])
@@ -66,6 +70,7 @@ class ScoresController < ApplicationController
       format.html { redirect_to scores_path, notice: "Score was successfully deleted" }
     end
   end
+#-----------------------------------------------------------------------------------------------------------------------------
   
 
   def score_params 
@@ -73,18 +78,19 @@ class ScoresController < ApplicationController
   end
 
   private
+#-----------------------------------------------------------------------------------------------------------------------------
   
   def caluclate_net(score)
     #if round = 1, net score is score - (handicap * .778), any other round is score - handicap
     if score.round.round_number === 1 
-      net_score = score.score - (current_user.handicap * 0.778) 
+      net_score = score.score - (score.user.handicap * 0.778) 
     else
-      net_score = score.score - current_user.handicap
+      net_score = score.score - score.user.handicap
     end
-    puts "Net score calculation for #{current_user.email}: #{net_score}"  # Debugging line
+    puts "Net score for #{score.user.email}: #{net_score}, Handicap: #{score.user.handicap}"  # Debugging line
     score.net_score = net_score
   end
-
+#-----------------------------------------------------------------------------------------------------------------------------
   def calculate_points(round_id)
     scores = Score.where(round_id: round_id).order(:net_score)
     
