@@ -88,7 +88,7 @@ class ScoresController < ApplicationController
       net_score = score.score - score.user.handicap
     end
     puts "Net score for #{score.user.email}: #{net_score}, Handicap: #{score.user.handicap}"  # Debugging line
-    score.net_score = net_score
+    score.net_score = net_score.round
   end
 #-----------------------------------------------------------------------------------------------------------------------------
   def calculate_points(round_id)
