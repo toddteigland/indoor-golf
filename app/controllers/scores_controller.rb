@@ -81,6 +81,7 @@ class ScoresController < ApplicationController
     else
       net_score = score.score - current_user.handicap
     end
+    puts "Net score calculation for #{current_user.email}: #{net_score}"  # Debugging line
     score.net_score = net_score
   end
 
