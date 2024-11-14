@@ -32,8 +32,8 @@
               <td><%= standing.round_5 || 0 %>/<strong><%=standing.round_5_net || 0 %></strong>/<span class="text-danger fw-bold"><%= standing.round_5_points || 0 %></span></td>
               <td><%= standing.round_6 || 0 %>/<strong><%=standing.round_6_net || 0 %></strong>/<span class="text-danger fw-bold"><%= standing.round_6_points || 0 %></span></td>
               <td><%= standing.total_score %></td>
-              <% total_net = standing.round_1_net + standing.round_2_net + standing.round_3_net +
-                         standing.round_4_net + standing.round_5_net + standing.round_6_net%>
+              <% total_net = (standing.round_1_net || 0) + (standing.round_2_net || 0) + (standing.round_3_net || 0) +
+                         (standing.round_4_net || 0) + (standing.round_5_net || 0) + (standing.round_6_net || 0)%>
               <td><strong><%= total_net%></strong></td>
               <td class="text-danger fw-bold"><%= standing.total_points %></td>
             </tr>
