@@ -27,7 +27,7 @@
                 <td><%= score.round.round_number %></td>
                 <td><%= score.user.email %></td>
                 <td><%= score.round.course %></td>
-                <td><%= score.date_played.strftime("%b %d") %></td>
+                <td><%= score.date_played ? score.date_played.strftime("%b %d") : "No Date" %></td>
                 <td><%= score.score %></td>
                 <td>
                   <% if score.round.round_number == 1 %>

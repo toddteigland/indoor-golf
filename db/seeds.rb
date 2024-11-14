@@ -1,23 +1,13 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-# db/seeds.rb
-
 # Clear existing data (if desired)
-Round.destroy_all
+# Round.destroy_all
 
-# Create new course records
-Round.create([
-  { round_number: 1, course: 'Fairmont Chateau Whistler GC' },
-  { round_number: 2, course: 'TBD Course 2' },
-  { round_number: 3, course: 'TBD Course 3' },
-  { round_number: 4, course: 'TBD Course 4' },
-  { round_number: 5, course: 'TBD Course 5' },
-  { round_number: 6, course: 'TBD Course 6' }
-])
+
+# Find or create rounds with the initial placeholder courses
+["Fairmont Chateau Whistler GC", "TBD Course 2", "TBD Course 3", "TBD Course 4", "TBD Course 5", "TBD Course 6"].each_with_index do |course_name, index|
+  round = Round.find_or_create_by!(round_number: index + 1, course: course_name)
+
+  # Update any placeholder course names to actual course names as needed
+  if round.course == "TBD Course 2"
+    round.update(course: "Georgia Golf Club")
+  end
+end
