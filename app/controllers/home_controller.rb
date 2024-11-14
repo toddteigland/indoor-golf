@@ -1,13 +1,17 @@
   class HomeController < ApplicationController
   before_action :authenticate_user!
 
-    def index
-      @scores = Score.includes(:round, :user).order('users.email, rounds.round_number')
-      @standings = calculate_standings.sort_by do |user|
-        user.round_1_points + user.round_2_points + user.round_3_points + 
-      user.round_4_points + user.round_5_points + user.round_6_points
-      end.reverse
-    end
+  def index
+    @scores = Score.includes(:round, :user).order('users.email, rounds.round_number')
+    @standings = calculate_standings.sort_by do |user|
+      (user.round_1_points || 0) + 
+      (user.round_2_points || 0) + 
+      (user.round_3_points || 0) + 
+      (user.round_4_points || 0) + 
+      (user.round_5_points || 0) + 
+      (user.round_6_points || 0)
+    end.reverse
+  end
 
     private
 
