@@ -91,33 +91,41 @@ class ScoresController < ApplicationController
     score.net_score = net_score.round
   end
 #-----------------------------------------------------------------------------------------------------------------------------
-  def calculate_points(round_id)
-    scores = Score.where(round_id: round_id).order(:net_score)
-    
-    # Reset points to ensure no residual values
-    scores.update_all(points: nil)
-    
-    points_distribution = [6, 5, 4, 3, 2, 1]  # Array of available points
-    index = 0  # Starting position in points distribution
-    
-    # Group scores by net_score for handling ties
-    scores.chunk_while { |prev, curr| prev.net_score == curr.net_score }.each do |tied_scores|
-      num_tied = tied_scores.size
+def calculate_points(round_id)
+  scores = Score.where(round_id: round_id).order(:net_score)
   
-      # Calculate total points for tied group and distribute evenly, rounding as needed
-      points_to_distribute = points_distribution[index, num_tied].sum.to_f
-      split_points = (points_to_distribute / num_tied).round(1)  # Round to 1 decimal for consistency
+  # Reset points to ensure no residual values
+  scores.update_all(points: nil)
+  
+  # Define the points distribution for the top 6 players
+  max_points_distribution = [6, 5, 4, 3, 2, 1]
+  
+  # Group scores by net_score to handle ties
+  index = 0  # Start at the beginning of the points distribution array
+  scores.chunk_while { |prev, curr| prev.net_score == curr.net_score }.each do |tied_scores|
+    num_tied = tied_scores.size
+    
+    # If the current index exceeds the available points, assign 0 points to all remaining scores
+    if index >= max_points_distribution.size
+      tied_scores.each do |score|
+        score.update(points: 0)
+      end
+    else
+      # Calculate points for this group of tied scores
+      points_to_distribute = max_points_distribution[index, num_tied].sum.to_f
+      split_points = (points_to_distribute / num_tied).round(1)  # Distribute points evenly among ties
       
-      # Assign the calculated points to each score in this tied group
+      # Update each score in this tied group with the calculated points
       tied_scores.each do |score|
         score.update(points: split_points)
-        puts "**** Updated Score: #{score.inspect}"  # Debugging line for verification
       end
       
-      # Move index forward by the size of this tied group
+      # Move the index forward by the number of players in the current tie group
       index += num_tied
     end
   end
+end
+
   
   
   
