@@ -1,6 +1,6 @@
 <div class="card shadow border-success">
   <div class="card-header d-flex justify-content-center text-center bg-success-subtle">
-    <h1>Welcome to the 2024/2025 indoor golf season!</h1>
+    <h1>Standings</h1>
   </div>
   <div class="card-body">
     <div class="table-responsive mb-4">
@@ -40,14 +40,6 @@
           <% end %>
         </tbody>
       </table>
-    </div>
-    <div class="d-flex flex-column align-content-center text-center gap-2">
-      <%= button_to 'Enter A new score', new_score_path, method: :get, class:"btn btn-success" %>
-      <%= button_to 'View my scores', scores_path, method: :get, class:"btn btn-primary" %>
-      <% if admin? %>
-        <%= button_to 'View all scores', admin_scores_scores_path, method: :get, class:"btn btn-info mt-3" %>
-      <% end %>
-      <%= button_to 'Playoffs', playoffs_path, method: :get, class:"btn bg-warning-subtle border-warning" %>
     </div>
   </div>
 </div>

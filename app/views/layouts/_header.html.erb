@@ -1,19 +1,43 @@
-<div class="container d-flex justify-content-center border-bottom mb-2 mt-2 pb-2">
-  <div>
-    <button class='btn btn-primary' data-bs-toggle="offcanvas" type="button" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-      <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-    </button>
-  </div>
+<div class="container d-flex justify-content-between border-bottom border-top align-items-center mb-2 mt-2">
+  <h1><strong>Indoor Golf</strong></h1>
+  <button class='btn' data-bs-toggle="offcanvas" type="button" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+  </button>
 </div>
-<div class="offcanvas offcanvas-top h-25 border-success" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-end border-success" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <% if user_signed_in? %>
     <div class="offcanvas-header bg-success-subtle">
       <h3><%= current_user.email %></h3>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body d-flex flex-column align-items-center background-pixel">
-      <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class:'btn btn-warning mb-4 btn-lg shadow' %>
-      <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:'btn btn-danger btn-sm shadow'%>
+    <div class="offcanvas-body d-flex flex-column align-items-end background-pixel justify-content-between">
+      <div class="d-flex flex-column gap-2 text-end">
+        <%= link_to root_path, class:'border-bottom w-100 text-decoration-none p-3 d-block text-black' do %>
+          Standings
+        <% end %>
+        <%= link_to new_score_path, class:'border-bottom w-100 text-decoration-none p-3 d-block text-black' do %>
+          Enter a new score
+        <% end %>
+        <%= link_to scores_path, class:'border-bottom w-100 text-decoration-none p-3 d-block text-black' do %>
+          View my scores
+        <% end %>
+        <%= link_to playoffs_path, class:'border-bottom w-100 text-decoration-none p-3 d-block text-black' do %>
+          Playoffs
+        <% end %>
+        <% if admin? %>
+          <%= link_to admin_scores_scores_path, class:'border-bottom w-100 text-decoration-none p-3 d-block text-info' do %>
+            View all scores
+          <% end %>
+        <% end %>
+      </div>
+      <div class="d-flex flex-column gap-2 align-items-end">
+        <%= link_to edit_user_registration_path, class:'border-bottom border-warning w-100 text-decoration-none p-3 d-block text-warning' do %>
+          Edit Profile
+        <% end %>
+        <%= link_to destroy_user_session_path, class:'border-bottom border-danger w-100 text-decoration-none p-3 d-block text-danger' do %>
+          Sign Out
+        <% end %>
+      </div>
     <% else %>
       <div class="offcanvas-header bg-body-tertiary d-flex justify-content-center bg-success-subtle">
         <h3>Please log in or sign up</h3>

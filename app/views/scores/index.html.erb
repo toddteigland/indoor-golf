@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-<div class="card shadow border-success">
+<div class="card shadow border-success mt-5">
   <div class="card-header d-flex justify-content-center bg-success-subtle">
     <h2>My Scores</h2>
   </div>
@@ -70,11 +70,6 @@
           </button>
         </div>
       </div>
-    </div>
-    <div class="d-flex flex-column align-self-center text-center mb-3">
-      <%= button_to 'Add new score', new_score_path, method: :get, class:"btn btn-success mb-2" %>
-      <%= button_to 'Standings', root_path, method: :get, class:"btn btn-primary mb-4" %>
-      <%= button_to 'Playoffs', playoffs_path, method: :get, class:"btn bg-warning-subtle border-warning" %>
     </div>
   <% end %>
 </div>
