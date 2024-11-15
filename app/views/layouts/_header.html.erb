@@ -1,13 +1,13 @@
-<div class="container d-flex justify-content-center border-bottom mt-4 mb-4 pb-4">
+<div class="container d-flex justify-content-center border-bottom mt-4 mb-4 pb-4 flag-background">
   <div>
     <button class='btn btn-primary' data-bs-toggle="offcanvas" type="button" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
       <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
     </button>
   </div>
 </div>
-<div class="offcanvas offcanvas-top h-25" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-top h-25 border-success" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <% if user_signed_in? %>
-    <div class="offcanvas-header bg-body-tertiary">
+    <div class="offcanvas-header bg-success-subtle">
       <h3><%= current_user.email %></h3>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
@@ -15,7 +15,7 @@
       <%= button_to "Edit Profile", edit_user_registration_path, method: :get, class:'btn btn-warning mb-4 btn-lg shadow' %>
       <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:'btn btn-danger btn-sm shadow'%>
     <% else %>
-      <div class="offcanvas-header bg-body-tertiary d-flex justify-content-center">
+      <div class="offcanvas-header bg-body-tertiary d-flex justify-content-center bg-success-subtle">
         <h3>Please log in or sign up</h3>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
