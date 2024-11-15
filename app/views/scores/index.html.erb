@@ -71,9 +71,10 @@
         </div>
       </div>
     </div>
-    <div class="d-flex flex-column align-self-center text-center">
+    <div class="d-flex flex-column align-self-center text-center mb-3">
       <%= button_to 'Add new score', new_score_path, method: :get, class:"btn btn-success mb-2" %>
       <%= button_to 'Standings', root_path, method: :get, class:"btn btn-primary mb-4" %>
+      <%= button_to 'Playoffs', playoffs_path, method: :get, class:"btn bg-warning-subtle border-warning" %>
     </div>
   <% end %>
 </div>

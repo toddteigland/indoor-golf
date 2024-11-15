@@ -47,6 +47,7 @@
       <% if admin? %>
         <%= button_to 'View all scores', admin_scores_scores_path, method: :get, class:"btn btn-info mt-3" %>
       <% end %>
+      <%= button_to 'Playoffs', playoffs_path, method: :get, class:"btn bg-warning-subtle border-warning" %>
     </div>
   </div>
 </div>

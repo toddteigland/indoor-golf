@@ -1,0 +1,111 @@
+<div class="d-flex flex-column align-self-center gap-2">
+  <div class="d-flex flex-column align-self-center border-bottom ">
+    <h1>Playoffs</h1>
+  </div>
+  <div id="playoffCarousel" class="carousel carousel-dark slide pb-5">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner p-3 ">
+      <!-- ------------------------------------------------------------------------------------  -->
+      <div class="carousel-item active card">
+        <div class="border d-flex flex-column justify-content-between gap-3 border-warning shadow">
+          <div class="card d-flex flex-column m-3">
+            <div class="card-header d-flex flex-column text-center bg-warning-subtle">
+              <h3>Semi-finals #1</h3>
+            </div>
+            <div class="card-body">
+              <div class="card d-flex flex-row shadow">
+                <div class="border-end d-flex align-items-center p-3">
+                  <p class="mb-0">#1</p>
+                </div>
+                <div class="w-50 align-items-center p-3">
+                  <p class="mb-0">Username</p>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <%= image_tag 'vs.png', width:50, height:50 %>
+              </div>
+              <div class="card d-flex flex-row shadow">
+                <div class="border-end d-flex align-items-center p-3">
+                  <p class="mb-0">#4</p>
+                </div>
+                <div class="w-50 align-items-center p-3">
+                  <p class="mb-0">Username</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card d-flex flex-column m-3">
+            <div class="card-header d-flex flex-column text-center bg-warning-subtle">
+              <h3>Semi-finals #2</h3>
+            </div>
+            <div class="card-body">
+              <div class="card d-flex flex-row shadow">
+                <div class="border-end d-flex align-items-center p-3">
+                  <p class="mb-0">#2</p>
+                </div>
+                <div class="w-50 align-items-center p-3">
+                  <p class="mb-0">Username</p>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <%= image_tag 'vs.png', width:50, height:50 %>
+              </div>
+              <div class="card d-flex flex-row shadow">
+                <div class="border-end d-flex align-items-center p-3">
+                  <p class="mb-0">#3</p>
+                </div>
+                <div class="w-50 align-items-center p-3">
+                  <p class="mb-0">Username</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ------------------------------------------------------------------------------------  -->
+      <div class="carousel-item card">
+        <div class="card d-flex flex-column m-3">
+          <div class="card-header d-flex flex-column text-center bg-warning-subtle">
+            <h3>The Finals</h3>
+          </div>
+          <div class="card-body">
+            <div class="card d-flex flex-row shadow">
+              <div class="border-end d-flex align-items-center p-3">
+                <p class="mb-0">Seed</p>
+              </div>
+              <div class="w-50 align-items-center p-3">
+                <p class="mb-0">Username</p>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <%= image_tag 'vs.png', width:50, height:50 %>
+            </div>
+            <div class="card d-flex flex-row shadow">
+              <div class="border-end d-flex align-items-center p-3">
+                <p class="mb-0">Seed</p>
+              </div>
+              <div class="w-50 align-items-center p-3">
+                <p class="mb-0">Username</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ------------------------------------------------------------------------------------  -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#playoffCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#playoffCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="d-flex justify-content-center gap-3 mb-2">
+      <%= button_to 'Standings', root_path,  method: :get, class:"btn btn-primary" %>
+      <%= button_to 'My Scores', scores_path,  method: :get, class:"btn btn-primary" %>
+    </div>
+  </div>
