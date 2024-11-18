@@ -1,4 +1,5 @@
 class ScoresController < ApplicationController
+  before_action :authenticate_user!
   before_action :verify_admin, only: [:admin_scores]
 
   def index

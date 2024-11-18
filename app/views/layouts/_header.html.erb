@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-between border-bottom border-top align-items-center mb-2 mt-2 bg-secondary-subtle">
+<div class=" d-flex justify-content-between  align-items-center  mt-2 bg-secondary-subtle">
   <h1 style="position: relative; z-index: 1; height: 49.5px; margin: 0; " class="d-flex align-items-center">
     <div class="" style="width:200px; position:absolute; height: 100%; z-index: -1; background-color: #1785cf; clip-path: polygon(0 0, 100% 0%, 68% 100%, 0% 100%);"></div>
     <strong style="padding-left: 5px; color: #fff">Indoor Golf</strong>
@@ -8,7 +8,7 @@
   </button>
 </div>
 <ul class="nav nav-tabs">
-  <div class='d-flex border-bottom overflow-x-auto mb-3'>
+  <div class='d-flex border-bottom overflow-x-auto'>
     <% if user_signed_in? %>
       <li class="nav-item"><%= link_to root_path, class:"nav-link text-decoration-none #{'active' if current_page?(root_path)} p-3 d-block text-black ", style:'white-space:nowrap' do %>
           Standings
@@ -35,38 +35,38 @@
           <% end %>
         <% end %>
       </li>
-    <% else %>
-      <li class="nav-item">
-        <% link_to new_user_session_path, class:'border-end'%>
-        Log In  
-      </li>
     <% end %>
   </div>
 </ul>
-<div class="offcanvas offcanvas-end border-success h-50" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-end border-success h-25 rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <% if user_signed_in? %>
-    <div class="offcanvas-header bg-success-subtle">
-      <h3><%= current_user.email %></h3>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div class="offcanvas-header" style="background-color: #1785cf">
+      <h3 style="color:#fff"><%= current_user.email %></h3>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close", style="color:#fff"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column align-items-end background-pixel justify-content-between">
       <div class="d-flex flex-column gap-2 align-items-end">
         <%= link_to edit_user_registration_path, class:'border-bottom border-warning w-100 text-decoration-none p-3 d-block text-warning' do %>
           Edit Profile
         <% end %>
-        <%= link_to destroy_user_session_path, class:'border-bottom border-danger w-100 text-decoration-none p-3 d-block text-danger' do %>
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class:'border-bottom border-danger w-100 text-decoration-none p-3 d-block text-danger' do %>
           Sign Out
         <% end %>
       </div>
-    <% else %>
-      <div class="offcanvas-header bg-body-tertiary d-flex justify-content-center bg-success-subtle">
-        <h3>Please log in or sign up</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body d-flex flex-column align-items-center background-pixel">
-        <%= button_to "Log In", new_user_session_path, method: :get, class: 'btn btn-success mb-4 shadow'%>
-        <%= button_to "Sign Up", user_registration_path, method: :get, class: 'btn btn-success mb-4 shadow'%>
-      </div>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <div class="offcanvas-header bg-body-tertiary d-flex justify-content-center bg-success-subtle">
+      <h3>Please log in or sign up</h3>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="d-flex flex-column gap-2 align-items-end">
+      <%= link_to new_user_session_path, class:'border-bottom border-warning w-100 text-decoration-none p-3 d-block text-warning' do %>
+        Log In
+      <% end %>
+      <%= link_to user_registration_path, class:'border-bottom border-danger w-100 text-decoration-none p-3 d-block text-danger' do %>
+        Sign Up
+      <% end %>
+    </div>
+  <% end %>
+</div>
 </div>
