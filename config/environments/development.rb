@@ -76,23 +76,21 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
-  # Mailer setup
+  # EMAIL SETUP
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address: 'smtp.mailgun.org',
+  address: 'smtP.gmail.com',
   port: 587,
-  domain: ENV['MAILGUN_DOMAIN'],  # Use your Mailgun domain
-  user_name: ENV['MAILGUN_USERNAME'],  # This should be your Mailgun username
-  password: ENV['MAILGUN_API_KEY'],  # Your Mailgun API key (not the private key)
+  user_name: ENV['GMAIL_USERNAME'],  # This should be your Mailgun username
+  password: ENV['GMAIL_PASSWORD'],  # Your Mailgun API key (not the private key)
   authentication: 'plain',
   enable_starttls_auto: true
-}
-config.action_mailer.default_options = { from: 'toddteigland@gmail.com' }  # Use a valid email here
-Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  }
+  config.action_mailer.default_options = { from: 'toddteigland@gmail.com' }  # Use a valid email here
+  Rails.application.routes.default_url_options[:host] = 'indoor-golf.onrender.com'
 
-config.action_mailer.raise_delivery_errors = true
-config.action_mailer.perform_deliveries = true
-config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
 
 
 end
