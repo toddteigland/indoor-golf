@@ -73,3 +73,5 @@ end
 gem "devise", "~> 4.9"
 gem 'jquery-rails'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'mailgun-ruby', '~> 1.2.6'
+gem 'ffi'

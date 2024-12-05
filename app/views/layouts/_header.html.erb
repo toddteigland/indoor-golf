@@ -30,7 +30,7 @@
       </li>
       <li class="nav-item">
         <% if admin? %>
-          <%= link_to admin_scores_scores_path, class:"nav-link text-decoration-none #{'active' if current_page?(admin_scores_scores_path)} p-3 d-block text-info", style:'white-space:nowrap' do %>
+          <%= link_to admin_scores_scores_path, class:"nav-link text-decoration-none hero-color #{'active' if current_page?(admin_scores_scores_path)} p-3 d-block", style:'white-space:nowrap' do %>
             All Scores
           <% end %>
         <% end %>

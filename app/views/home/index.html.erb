@@ -26,48 +26,48 @@
             <tr class="h-25">
               <td><%= standing.email.split('@').first %></td>
               <td><%= standing.handicap %></td>
-              <td><%= standing.round_1 || 0 %>/<strong><%=standing.round_1_net || 0 %></strong>/<span class="text-danger fw-bold"><%= standing.round_1_points || 0 %></span></td>
-              <td><%= standing.round_2 || 0 %>/<strong><%=standing.round_2_net || 0 %></strong>/<span class="text-danger fw-bold"><%= standing.round_2_points || 0 %></span></td>
-              <td><%= standing.round_3 || 0 %>/<strong><%=standing.round_3_net || 0 %></strong>/<span class="text-danger fw-bold"><%= standing.round_3_points || 0 %></span></td>
-              <td><%= standing.round_4 || 0 %>/<strong><%=standing.round_4_net || 0 %></strong>/<span class="text-danger fw-bold"><%= standing.round_4_points || 0 %></span></td>
-              <td><%= standing.round_5 || 0 %>/<strong><%=standing.round_5_net || 0 %></strong>/<span class="text-danger fw-bold"><%= standing.round_5_points || 0 %></span></td>
-              <td><%= standing.round_6 || 0 %>/<strong><%=standing.round_6_net || 0 %></strong>/<span class="text-danger fw-bold"><%= standing.round_6_points || 0 %></span></td>
-              <td><%= standing.total_score %></td>
-              <% total_net = (standing.round_1_net || 0) + (standing.round_2_net || 0) + (standing.round_3_net || 0) +
+              <td><%= standing.round_1 || 0 %>/<span class="fw-bold"><strong><%=standing.round_1_net || 0 %></strong></span>/<span class="fw-bold hero-color"><strong><%= standing.round_1_points || 0 %></span></strong></td>
+              <td><%= standing.round_2 || 0 %>/<span class="Fw-bold"><strong><%=standing.round_2_net || 0 %></strong>/<span class="fw-bold hero-color"><strong><%= standing.round_2_points || 0 %></span></strong></td>
+                <td><%= standing.round_3 || 0 %>/<span class="fw-bold"><strong><%=standing.round_3_net || 0 %></strong></span>/<span class="fw-bold hero-color"><strong><%= standing.round_3_points || 0 %></span></strong></td>
+                <td><%= standing.round_4 || 0 %>/<span class="fw-bold"><strong><%=standing.round_4_net || 0 %></strong></span>/<span class="fw-bold hero-color"><strong><%= standing.round_4_points || 0 %></span></strong></td>
+                <td><%= standing.round_5 || 0 %>/<span class="fw-bold"><strong><%=standing.round_5_net || 0 %></strong></span>/<span class="fw-bold hero-color"><strong><%= standing.round_5_points || 0 %></span></strong></td>
+                <td><%= standing.round_6 || 0 %>/<span class="fw-bold"><strong><%=standing.round_6_net || 0 %></strong></span>/<span class="fw-bold hero-color"><strong><%= standing.round_6_points || 0 %></span></strong></td>
+                <td><%= standing.total_score %></td>
+                <% total_net = (standing.round_1_net || 0) + (standing.round_2_net || 0) + (standing.round_3_net || 0) +
                          (standing.round_4_net || 0) + (standing.round_5_net || 0) + (standing.round_6_net || 0)%>
-              <td><strong><%= total_net%></strong></td>
-              <td class="text-danger fw-bold"><%= standing.total_points %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+                <td><span class="fw-bold"><strong><%= total_net%></strong></span></td>
+                <td class="fw-bold"><strong><span class="hero-color"><%= standing.total_points %></strong></span></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
-<div class="card m-4 shadow-lg border-success">
-  <div class="card-header d-flex justify-content-center bg-success-subtle">
-    <h2>Deets</h2>
-  </div>
-  <div class="card-body">
-    <ul>
-      <li class="text-danger">Round one is 78% of cap due to playing 14 holes</li>
-      <li>Entry fee is <strong>$150</strong></li>
-      <ul>Points breakdown
-        <li>1st place - 6</li>
-        <li>2nd place - 5</li>
-        <li>3rd place - 4</li>
-        <li>4th place - 3</li>
-        <li>5th place - 2</li>
-        <li>6th place - 1</li>
-        <li>7th & below - 0</li>
-        <ul>
-          <li>Ties split points
-          </li>
+  <div class="card m-4 shadow-lg border-success">
+    <div class="card-header d-flex justify-content-center bg-success-subtle">
+      <h2>Deets</h2>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li class="text-danger">Round one is 78% of cap due to playing 14 holes</li>
+        <li>Entry fee is <strong>$150</strong></li>
+        <ul>Points breakdown
+          <li>1st place - 6</li>
+          <li>2nd place - 5</li>
+          <li>3rd place - 4</li>
+          <li>4th place - 3</li>
+          <li>5th place - 2</li>
+          <li>6th place - 1</li>
+          <li>7th & below - 0</li>
+          <ul>
+            <li>Ties split points
+            </li>
+          </ul>
+          <li>Reg Season lasts 5 months/rounds</li>
+          <li>1st place gets <strong>$150</strong></li>
+          <li>Top 4 make Matchplay Playoffs</li>
+          <li>1 plays 4 / 2 plays 3</li>
+          <li>Playoff winner gets remaining <strong>$900</strong></li>
         </ul>
-        <li>Reg Season lasts 5 months/rounds</li>
-        <li>1st place gets <strong>$150</strong></li>
-        <li>Top 4 make Matchplay Playoffs</li>
-        <li>1 plays 4 / 2 plays 3</li>
-        <li>Playoff winner gets remaining <strong>$900</strong></li>
-      </ul>
-    </div>
+      </div>
