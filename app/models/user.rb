@@ -7,11 +7,4 @@ class User < ApplicationRecord
 
   validates :handicap, numericality: { greater_than_or_equal_to: 0 }
 
-  def generate_reset_token!
-    self.reset_token = SecureRandom.urlsafe_base64
-    self.reset_sent_at = Time.current
-    save!
-  end
-
-  
 end

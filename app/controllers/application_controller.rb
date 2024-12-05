@@ -13,15 +13,5 @@ class ApplicationController < ActionController::Base
     current_user && current_user.email == "toddteigland@gmail.com"
   end
 
-  def forgot_password
-    user = User.find_by(email: params[:email])
-    if user
-      user.generate_reset_token! # Add a method to your User model
-      UserMailer.forgot_password(user).deliver_now
-    end
-    flash[:notice] = "If that email exists, password reset instructions have been sent."
-    redirect_to root_path
-  end
-  
 
 end
