@@ -97,14 +97,15 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  config.action_mailer.default_url_options = { host: 'indoor-golf.onrender.com', protocol: 'https' }
-
-
+  
+  
+  # config.action_mailer.default_url_options = { host: 'indoor-golf.onrender.com', protocol: 'https' }
   # EMAIL SETUP
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   address: 'smtP.gmail.com',
   port: 587,
+  domain: 'gmail.com',
   user_name: ENV['GMAIL_USERNAME'],  # This should be your Mailgun username
   password: ENV['GMAIL_PASSWORD'],  # Your Mailgun API key (not the private key)
   authentication: 'plain',
