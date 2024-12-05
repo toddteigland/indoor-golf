@@ -15,6 +15,3 @@ class User < ApplicationRecord
 
   
 end
-
-# Mailgun Api
-# 99e7702a0467357b344acb4bb0499756-f55d7446-81907d06
