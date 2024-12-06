@@ -109,7 +109,7 @@ Rails.application.configure do
   user_name: ENV['GMAIL_USERNAME'],  # This should be your Mailgun username
   password: ENV['GMAIL_PASSWORD'],  # Your Mailgun API key (not the private key)
   authentication: 'plain',
-  enable_starttls_auto: true
+  #enable_starttls_auto: true
   }
   config.action_mailer.default_options = { from: 'toddteigland@gmail.com' }  # Use a valid email here
   Rails.application.routes.default_url_options[:host] = 'indoor-golf.onrender.com'
