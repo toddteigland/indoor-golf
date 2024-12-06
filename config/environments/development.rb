@@ -82,8 +82,8 @@ Rails.application.configure do
   address: 'smtP.gmail.com',
   port: 587,
   domain: 'gmail.com',
-  user_name: ENV['GMAIL_USERNAME'],  # This should be your Mailgun username
-  password: ENV['GMAIL_PASSWORD'],  # Your Mailgun API key (not the private key)
+  user_name: ENV['GMAIL_USERNAME'],  
+  password: ENV['GMAIL_PASSWORD'], 
   authentication: 'plain',
   enable_starttls_auto: true
   }
