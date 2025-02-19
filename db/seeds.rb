@@ -12,6 +12,8 @@
     round.course = "Georgia Golf Club"
   when 3
     round.course = "Gold Mountain Olympic"
+  when 4
+    round.course = "Bear Mountain"
   else
     round.course = course_name if round.course.blank? || round.course.start_with?("TBD")
   end
