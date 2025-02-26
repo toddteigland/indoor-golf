@@ -6,6 +6,7 @@
   when 2 then "Georgia Golf Club"
   when 3 then "Gold Mountain Olympic"
   when 4 then "Bear Mountain"
+  when 5 then "Wolf Creek Golf Club"
   else course_name
   end
   
