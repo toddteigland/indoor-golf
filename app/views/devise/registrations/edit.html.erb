@@ -13,20 +13,20 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
       <div class="form-floating mt-2">
-        <%= f.password_field :new_password, autocomplete: "New Password", placeholder:" ", class:"form-control" %>
-        <%= f.label :new_password, for:"new_password", class:"form-label" %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "New Password", placeholder:" ", class:"form-control" %>
+        <%= f.label :password, for:"password", class:"form-label" %> <i>(leave blank if you don't want to change it)</i><br />
         <% if @minimum_password_length %>
           <br />
           <em><%= @minimum_password_length %> characters minimum</em>
         <% end %>
       </div>
       <div class="form-floating mt-2">
-        <%= f.password_field :new_password_confirmation, autocomplete: "New Password Confirmation", placeholder:" ", class:"form-control" %>
-        <%= f.label :new_password_confirmation, for:"new_password_confirmation", class:"form-label" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "New Password Confirmation", placeholder:" ", class:"form-control" %>
+        <%= f.label :password_confirmation, for:"password_confirmation", class:"form-label" %><br />
       </div>
       <div class="form-floating mt-2">
-        <%= f.password_field :old_password, autocomplete: "old password", placeholder:" ", class:"form-control" %>
-        <%= f.label :old_password, for:"old_password", class:"form-label" %><br />
+        <%= f.password_field :current_password, autocomplete: "old password", placeholder:" ", class:"form-control" %>
+        <%= f.label :current_password, for:"current_password", class:"form-label" %><br />
       </div>
       <div class="form-floating mt-2">
         <%= f.number_field :handicap, step: 0.1, autocomplete: "handicap", placeholder:" ", class:"form-control" %>
