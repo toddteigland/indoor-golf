@@ -1,3 +1,6 @@
 a.active {
   border-color: #1785cf !important;
 }
+.custom-height {
+  height: 35% !important;
+}
