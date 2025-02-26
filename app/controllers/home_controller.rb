@@ -1,20 +1,15 @@
   class HomeController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_standings
 
   def index
     @scores = Score.includes(:round, :user).order('users.email, rounds.round_number')
-    @standings = calculate_standings.sort_by do |user|
-      (user.round_1_points || 0) + 
-      (user.round_2_points || 0) + 
-      (user.round_3_points || 0) + 
-      (user.round_4_points || 0) + 
-      (user.round_5_points || 0) + 
-      (user.round_6_points || 0)
-    end.reverse
   end
 
   def playoffs
-  
+    @playoff_players = @standings.first(4)
+    puts '**** standings players ****', @standings
+    puts '***** PLAYOFF PLAYERS ******', @playoff_players
   end
 
     private
@@ -45,7 +40,16 @@
         .group('users.id')
     end
     
-    
+    def set_standings
+      @standings = calculate_standings.sort_by do |user|
+        (user.round_1_points || 0) + 
+        (user.round_2_points || 0) + 
+        (user.round_3_points || 0) + 
+        (user.round_4_points || 0) + 
+        (user.round_5_points || 0) + 
+        (user.round_6_points || 0)
+      end.reverse
+    end
     
     
 
