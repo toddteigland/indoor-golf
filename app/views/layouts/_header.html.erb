@@ -1,8 +1,11 @@
 <div class=" d-flex justify-content-between  align-items-center  mt-2 bg-secondary-subtle">
   <h1 style="position: relative; z-index: 1; height: 49.5px; margin: 0; " class="d-flex align-items-center">
     <div class="" style="width:200px; position:absolute; height: 100%; z-index: -1; background-color: #1785cf; clip-path: polygon(0 0, 100% 0%, 68% 100%, 0% 100%);"></div>
-    <strong style="padding-left: 5px; color: #fff">Indoor Golf</strong>
-  </h1>
+    <% if user_signed_in? %>
+      <%= link_to 'Indoor Golf', root_path, class: 'text-decoration-none text-white' %> <!-- Link to standings page when logged in -->
+    <% else %>
+      <%= link_to 'Indoor Golf', new_user_session_path, class: 'text-decoration-none text-white' %> <!-- Link to login page when not logged in -->
+    <% end %>  </h1>
   <button class='btn' data-bs-toggle="offcanvas" type="button" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-label="Open/Close menu">
     <i class="fa-solid fa-golf-ball fa-3x" style="color: #1785cf", aria-hidden="true"></i>
   </button>
@@ -38,8 +41,8 @@
     <% end %>
   </div>
 </ul>
-<div class="custom-height offcanvas offcanvas-end border-success rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
+  <div class="custom-height offcanvas offcanvas-end border-success rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header" style="background-color: #1785cf">
       <h3 style="color:#fff"><%= current_user.email %></h3>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close", style="color:#fff"></button>
@@ -54,7 +57,9 @@
         <% end %>
       </div>
     </div>
-  <% else %>
+  </div>
+<% else %>
+  <div class="h-50 offcanvas offcanvas-end border-success rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header"  style="background-color: #1785cf">
       <h3 style="color:#fff">Please log in or sign up</h3>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close", style="color:#fff"></button>
@@ -67,8 +72,14 @@
         <%= link_to user_registration_path, class:'border-bottom border-danger w-100 text-decoration-none p-3 d-block text-danger' do %>
           Sign Up
         <% end %>
+        <%= link_to root_path, class:'border-bottom w-100 text-decoration-none p-3 d-block hero-color hero-border' do %>
+          View Standings
+        <% end %>
+        <%= link_to playoffs_path, class:'border-bottom w-100 text-decoration-none p-3 d-block hero-color hero-border' do %>
+          View Playoffs
+        <% end %>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
 </div>
