@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_14_042443) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_03_213600) do
+  create_table "playoffs", force: :cascade do |t|
+    t.integer "round"
+    t.integer "player_1_id"
+    t.integer "player_2_id"
+    t.integer "winner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "player_1_seed"
+    t.integer "player_2_seed"
+  end
+
   create_table "rounds", force: :cascade do |t|
     t.integer "round_number"
     t.string "course"

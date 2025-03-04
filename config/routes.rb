@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
   get 'playoffs', to: 'home#playoffs', as: 'playoffs'
+  patch '/playoff_result', to: 'home#playoff_result', as: 'playoff_result'
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
