@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<% if notice.present? %>
+  <p style="color: green"><%= notice %></p>
+<% end %>
 <div class="card shadow border-success">
-  <div class="card-header d-flex justify-content-center text-center bg-success-subtle">
+  <div class="card-header d-flex justify-content-center text-center hero-color3 text-white">
     <h1>Standings</h1>
   </div>
   <div class="card-body">
-    <div class="table-responsive mb-4">
+    <div class="table-responsive ">
       <table class="table table-striped table-light table-bordered mb-4">
         <thead>
           <tr>
@@ -43,29 +45,26 @@
   </div>
 </div>
 <div class="card m-4 shadow-lg border-success">
-  <div class="card-header d-flex justify-content-center bg-success-subtle">
+  <div class="card-header d-flex justify-content-center hero-color3 text-white">
     <h2>Deets</h2>
   </div>
   <div class="card-body">
     <ul>
-      <li class="text-danger">Round one is 78% of cap due to playing 14 holes</li>
       <li>Entry fee is <strong>$150</strong></li>
-      <ul>Points breakdown
-        <li>1st place - 6</li>
-        <li>2nd place - 5</li>
-        <li>3rd place - 4</li>
-        <li>4th place - 3</li>
-        <li>5th place - 2</li>
-        <li>6th place - 1</li>
-        <li>7th & below - 0</li>
-        <ul>
-          <li>Ties split points
-          </li>
-        </ul>
-        <li>Reg Season lasts 5 months/rounds</li>
-        <li>1st place gets <strong>$150</strong></li>
-        <li>Top 4 make Matchplay Playoffs</li>
-        <li>1 plays 4 / 2 plays 3</li>
-        <li>Playoff winner gets remaining <strong>$900</strong></li>
-      </ul>
-    </div>
+      <li>Reg Season lasts 5 months/rounds</li>
+      <li>1st place gets <strong>$150</strong></li>
+      <li>Top 4 make Matchplay Playoffs</li>
+      <li>1 plays 4 / 2 plays 3</li>
+      <li>Playoff winner gets remaining <strong>$$$</strong></li>
+    </ul>
+    <ul><strong>Points breakdown per round</strong>
+      <li>1st place - 6</li>
+      <li>2nd place - 5</li>
+      <li>3rd place - 4</li>
+      <li>4th place - 3</li>
+      <li>5th place - 2</li>
+      <li>6th place - 1</li>
+      <li>7th & below - 0</li>
+      <li>Ties split points</li>
+    </ul>
+  </div>

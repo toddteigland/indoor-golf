@@ -4,6 +4,13 @@
  *= require header
  */
 
+ html, body {
+  height: 100%;
+  margin: 0;
+ }
+ body {
+  min-height: 100vh;
+ }
 h1, h2, h3, h4, h5, a {
   font-family: 'Nunito Sans', sans-serif;
 }
@@ -16,4 +23,16 @@ h1, h2, h3, h4, h5, a {
 }
 .text-shadow {
   text-shadow: .5px .5px white;
+}
+.hero-color1 {
+  background-color: #1B3C53;
+}
+.hero-color2{
+  background-color: #234C6A;
+}
+.card-header.hero-color3 {
+ background-color: #456882;
+}
+.hero-color4 {
+  background-color: #E9DAD1;
 }

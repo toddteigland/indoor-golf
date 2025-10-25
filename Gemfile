@@ -75,3 +75,7 @@ gem 'jquery-rails'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'mailgun-ruby', '~> 1.2.6'
 gem 'ffi'
+
+group :development do
+  gem 'letter_opener'
+end

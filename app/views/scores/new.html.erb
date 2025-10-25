@@ -1,6 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<% if notice.present? %>
+  <p style="color: green"><%= notice %></p>
+<% end %>
 <div class="card shadow border-success">
-  <div class="card-header d-flex justify-content-center bg-success-subtle">
+  <div class="card-header d-flex justify-content-center hero-color3 text-white">
     <h3>New Score entry page</h3>
   </div>
   <div class="card-body">

@@ -1,17 +1,17 @@
-<div class=" d-flex justify-content-between  align-items-center  mt-2 bg-secondary-subtle">
-  <h1 style="position: relative; z-index: 1; height: 49.5px; margin: 0; " class="d-flex align-items-center">
-    <div class="" style="width:200px; position:absolute; height: 100%; z-index: -1; background-color: #1785cf; clip-path: polygon(0 0, 100% 0%, 68% 100%, 0% 100%);"></div>
+<div class=" d-flex justify-content-between  align-items-center hero-color4 pb-2">
+  <h1 style="position: relative; z-index: 1; height: 49.5px; margin: 0;" class="d-flex align-items-center">
+    <div class="hero-color2 " style="width:300px; position:absolute; height: 100%; z-index: -1; clip-path: polygon(0 0, 100% 0%, 68% 100%, 0% 100%);"></div>
     <% if user_signed_in? %>
-      <%= link_to 'Indoor Golf', root_path, class: 'text-decoration-none text-white' %> <!-- Link to standings page when logged in -->
+      <%= link_to 'Indoor Golf', root_path, class: 'text-decoration-none text-white ps-3' %> <!-- Link to standings page when logged in -->
     <% else %>
       <%= link_to 'Indoor Golf', new_user_session_path, class: 'text-decoration-none text-white' %> <!-- Link to login page when not logged in -->
     <% end %>  </h1>
   <button class='btn' data-bs-toggle="offcanvas" type="button" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-label="Open/Close menu">
-    <i class="fa-solid fa-golf-ball fa-3x" style="color: #1785cf", aria-hidden="true"></i>
+    <i class="fa-solid fa-golf-ball fa-3x" style="color: #234C6A", aria-hidden="true"></i>
   </button>
 </div>
-<ul class="nav nav-tabs">
-  <div class='d-flex border-bottom overflow-x-auto'>
+<ul class="nav nav-tabs pb-2">
+  <div class='d-flex overflow-x-auto'>
     <% if user_signed_in? %>
       <li class="nav-item"><%= link_to root_path, class:"nav-link text-decoration-none #{'active' if current_page?(root_path)} p-3 d-block text-black ", style:'white-space:nowrap' do %>
           Standings
