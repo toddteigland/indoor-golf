@@ -7,8 +7,12 @@
     end
 
     def playoffs
+      if @standings = nil || @standings.size < 4
+        return flash.now[:alert] = "Not enough players qualified for playoffs."
+      end
+
       @playoff_players = @standings.first(4).each_with_index.map { |player, index| [player, index + 1] }
-    
+
       if Playoff.count.zero? # Only seed the bracket if no matchups exist
         Playoff.create!(round: 1, player_1_id: @playoff_players[0][0].id, player_2_id: @playoff_players[3][0].id, player_1_seed: @playoff_players[0][1], player_2_seed: @playoff_players[3][1])
         Playoff.create!(round: 1, player_1_id: @playoff_players[1][0].id, player_2_id: @playoff_players[2][0].id, player_1_seed: @playoff_players[1][1], player_2_seed: @playoff_players[2][1])
