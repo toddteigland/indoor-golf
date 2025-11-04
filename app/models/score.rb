@@ -8,7 +8,7 @@ class Score < ApplicationRecord
 
   def calculate_net
     if self.round.round_number == 1
-      raw_net_score = self.score - (self.user.handicap * 0.778)
+      raw_net_score = self.score - (self.user.handicap * 0.5)
     else
       raw_net_score = self.score - self.user.handicap
     end
