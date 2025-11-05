@@ -1,85 +1,84 @@
-<div class=" d-flex justify-content-between  align-items-center hero-color4 pb-2">
-  <h1 style="position: relative; z-index: 1; height: 49.5px; margin: 0;" class="d-flex align-items-center">
-    <div class="hero-color2 " style="width:300px; position:absolute; height: 100%; z-index: -1; clip-path: polygon(0 0, 100% 0%, 68% 100%, 0% 100%);"></div>
+<div class=" d-flex justify-content-between header-gradient">
+  <h1 style="" class="d-flex align-items-center m-0 ">
     <% if user_signed_in? %>
-      <%= link_to 'Indoor Golf', root_path, class: 'text-decoration-none text-white ps-3' %> <!-- Link to standings page when logged in -->
+      <%= link_to 'INDOOR GOLF', root_path, class: 'text-decoration-none text-white ps-3 ' %> <!-- Link to standings page when logged in -->
     <% else %>
-      <%= link_to 'Indoor Golf', new_user_session_path, class: 'text-decoration-none text-white' %> <!-- Link to login page when not logged in -->
+      <%= link_to 'INDOOR GOLF', new_user_session_path, class: 'text-decoration-none text-white' %> <!-- Link to login page when not logged in -->
     <% end %>  </h1>
   <button class='btn' data-bs-toggle="offcanvas" type="button" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-label="Open/Close menu">
-    <i class="fa-solid fa-golf-ball fa-3x" style="color: #234C6A", aria-hidden="true"></i>
+    <i class="fa-solid fa-golf-ball fa-3x hero-color" style="", aria-hidden="true"></i>
   </button>
 </div>
-<ul class="nav nav-tabs pb-2">
-  <div class='d-flex overflow-x-auto'>
-    <% if user_signed_in? %>
-      <li class="nav-item"><%= link_to root_path, class:"nav-link text-decoration-none #{'active' if current_page?(root_path)} p-3 d-block text-black ", style:'white-space:nowrap' do %>
-          Standings
-        <% end %>
-      </li>
-      <li class="nav-item"><%= link_to new_score_path, class:"nav-link text-decoration-none #{'active' if current_page?(new_score_path)} p-3 d-block text-black ", style:'white-space:nowrap' do %>
-          New Score
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to scores_path, class:"nav-link text-decoration-none  p-3 d-block text-black #{'active' if current_page?(scores_path)}", style:'white-space:nowrap' do %>
-          My Scores
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to playoffs_path, class:"nav-link text-decoration-none #{'active' if current_page?(playoffs_path)} p-3 d-block text-black ", style:'white-space:nowrap' do %>
-          Playoffs
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <% if admin? %>
-          <%= link_to admin_scores_scores_path, class:"nav-link text-decoration-none hero-color #{'active' if current_page?(admin_scores_scores_path)} p-3 d-block", style:'white-space:nowrap' do %>
-            All Scores
+<div class="bg-white border-bottom border-1 border-dark mb-4 ">
+  <ul class="nav pb-2 pt-2 d-flex justify-content-center">
+    <div class='d-flex overflow-x-auto'>
+      <% if user_signed_in? %>
+        <li class="nav-item"><%= link_to root_path, class:"text-decoration-none p-2 d-block text-black rounded #{'active-link' if current_page?(root_path)}", style:'white-space:nowrap' do %>
+            Standings
           <% end %>
-        <% end %>
-      </li>
-    <% end %>
-  </div>
-</ul>
-<% if user_signed_in? %>
-  <div class="custom-height offcanvas offcanvas-end border-success rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header" style="background-color: #1785cf">
-      <h3 style="color:#fff"><%= current_user.email %></h3>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close", style="color:#fff"></button>
+        </li>
+        <li class="nav-item"><%= link_to new_score_path, class:"nav-link text-decoration-none p-2 d-block text-black rounded #{'active-link' if current_page?(new_score_path)}", style:'white-space:nowrap' do %>
+            New Score
+          <% end %>
+        </li>
+        <li class="nav-item"><%= link_to scores_path, class:"nav-link text-decoration-none p-2 d-block text-black rounded #{'active-link' if current_page?(scores_path)}", style:'white-space:nowrap' do %>
+            My Scores
+          <% end %>
+        </li>
+        <li class="nav-item"><%= link_to playoffs_path, class:"nav-link text-decoration-none p-2 d-block text-black rounded #{'active-link' if current_page?(playoffs_path)}", style:'white-space:nowrap' do %>
+            Playoffs
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if admin? %>
+            <%= link_to admin_scores_scores_path, class:"nav-link text-decoration-none hero-color  p-2 d-block rounded #{'active-link' if current_page?(admin_scores_scores_path)}", style:'white-space:nowrap' do %>
+              All Scores
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
     </div>
-    <div class="offcanvas-body d-flex flex-column align-items-end background-pixel justify-content-between">
-      <div class="d-flex flex-column gap-2 align-items-end">
-        <%= link_to edit_user_registration_path, class:'border-bottom border-warning w-100 text-decoration-none p-3 d-block text-warning' do %>
-          Edit Profile
-        <% end %>
-        <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class:'border-bottom border-danger w-100 text-decoration-none p-3 d-block text-danger' do %>
-          Sign Out
-        <% end %>
+  </ul>
+  <% if user_signed_in? %>
+    <div class="custom-height offcanvas offcanvas-end border-dark rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header" style="background-color: #3d4850">
+        <h3 style="color:#fff"><%= current_user.email %></h3>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close", style="color:#fff"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column align-items-end background-pixel justify-content-between">
+        <div class="d-flex flex-column gap-2 align-items-end">
+          <%= link_to edit_user_registration_path, class:'border-bottom border-warning w-100 text-decoration-none p-3 d-block text-warning' do %>
+            Edit Profile
+          <% end %>
+          <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class:'border-bottom border-danger w-100 text-decoration-none p-3 d-block text-danger' do %>
+            Sign Out
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% else %>
-  <div class="h-50 offcanvas offcanvas-end border-success rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header"  style="background-color: #1785cf">
-      <h3 style="color:#fff">Please log in or sign up</h3>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close", style="color:#fff"></button>
-    </div>
-    <div class="offcanvas-body d-flex flex-column align-items-end background-pixel justify-content-between">
-      <div class="d-flex flex-column gap-2 align-items-end">
-        <%= link_to new_user_session_path, class:'border-bottom border-warning w-100 text-decoration-none p-3 d-block text-warning' do %>
-          Log In
-        <% end %>
-        <%= link_to user_registration_path, class:'border-bottom border-danger w-100 text-decoration-none p-3 d-block text-danger' do %>
-          Sign Up
-        <% end %>
-        <%= link_to root_path, class:'border-bottom w-100 text-decoration-none p-3 d-block hero-color hero-border' do %>
-          View Standings
-        <% end %>
-        <%= link_to playoffs_path, class:'border-bottom w-100 text-decoration-none p-3 d-block hero-color hero-border' do %>
-          View Playoffs
-        <% end %>
+  <% else %>
+    <div class="h-50 offcanvas offcanvas-end border-dark rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header"  style="background-color: #1785cf">
+        <h3 style="color:#fff">Please log in or sign up</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close", style="color:#fff"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column align-items-end background-pixel justify-content-between">
+        <div class="d-flex flex-column gap-2 align-items-end">
+          <%= link_to new_user_session_path, class:'border-bottom border-warning w-100 text-decoration-none p-3 d-block text-warning' do %>
+            Log In
+          <% end %>
+          <%= link_to new_user_registration_path, class:'border-bottom border-danger w-100 text-decoration-none p-3 d-block text-danger' do %>
+            Sign Up
+          <% end %>
+          <%= link_to root_path, class:'border-bottom w-100 text-decoration-none p-3 d-block hero-color hero-border' do %>
+            View Standings
+          <% end %>
+          <%= link_to playoffs_path, class:'border-bottom w-100 text-decoration-none p-3 d-block hero-color hero-border' do %>
+            View Playoffs
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 </div>

@@ -1,6 +1,11 @@
-a.active {
+/* a.active {
   border-color: #1785cf !important;
 }
 .custom-height {
   height: 35% !important;
+} */
+.header-gradient {
+  background-color: #2b2e31; /* Fallback */
+  background-image: linear-gradient(.25turn, #2b2e31, 70%, #515d66);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }

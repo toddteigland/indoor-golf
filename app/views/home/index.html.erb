@@ -1,50 +1,87 @@
 <% if notice.present? %>
   <p style="color: green"><%= notice %></p>
 <% end %>
-<div class="card shadow border-success">
-  <div class="card-header d-flex justify-content-center text-center hero-color3 text-white">
-    <h1>Standings</h1>
+<div class="card shadow border-dark mb-3">
+  <div class="card-header d-flex flex-column text-center hero-color3 text-white p-2">
+    <h1 class="m-0 mb-2">Standings</h1>
+    <ul class="nav nav-pills nav-fill" id="standingsToggle" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summaryView" type="button" role="tab" aria-controls="summaryView" aria-selected="true">
+          Summary View
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="full-tab" data-bs-toggle="tab" data-bs-target="#fullBreakdownView" type="button" role="tab" aria-controls="fullBreakdownView" aria-selected="false">
+          Full Breakdown
+        </button>
+      </li>
+    </ul>
   </div>
   <div class="card-body">
-    <div class="table-responsive ">
-      <table class="table table-striped table-light table-bordered mb-4">
-        <thead>
-          <tr>
-            <th>Golfer</th>
-            <th>Cap</th>
-            <th>R1</th>
-            <th>R2</th>
-            <th>R3</th>
-            <th>R4</th>
-            <th>R5</th>
-            <th>Total</th>
-            <th>Net</th>
-            <th>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @standings.each_with_index do |standing| %>
-            <tr class="h-25">
-              <td><%= standing.email.split('@').first %></td>
-              <td><%= standing.handicap %></td>
-              <td><%= standing.round_1 || 0 %>/<span class="fw-bold"><strong><%=standing.round_1_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_1_points || 0 %></span></strong></td>
-              <td><%= standing.round_2 || 0 %>/<span class="Fw-bold"><strong><%=standing.round_2_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_2_points || 0 %></span></strong></td>
-              <td><%= standing.round_3 || 0 %>/<span class="fw-bold"><strong><%=standing.round_3_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_3_points || 0 %></span></strong></td>
-              <td><%= standing.round_4 || 0 %>/<span class="fw-bold"><strong><%=standing.round_4_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_4_points || 0 %></span></strong></td>
-              <td><%= standing.round_5 || 0 %>/<span class="fw-bold"><strong><%=standing.round_5_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_5_points || 0 %></span></strong></td>
-              <td><%= standing.total_score %></td>
-              <% total_net = (standing.round_1_net || 0) + (standing.round_2_net || 0) + (standing.round_3_net || 0) +
-                       (standing.round_4_net || 0) + (standing.round_5_net || 0) + (standing.round_6_net || 0)%>
-              <td><span class="fw-bold"><strong><%= total_net%></strong></span></td>
-              <td class="fw-bold"><strong><span class="hero-color text-shadow"><%= standing.total_points %></strong></span></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="tab-content" id="standingsTabContent">
+      <div class="tab-pane fade show active" id="summaryView" role="tabpanel" aria-labelledby="summary-tab">
+        <div class="table-responsive">
+          <table class="table table-striped table-light table-bordered mb-0">
+            <thead class="bg-dark text-white">
+              <tr>
+                <th>Golfer</th>
+                <th class="text-center">Cap</th>
+                <th class="text-center">Total Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @standings.each do |standing| %>
+                <tr>
+                  <td class="fw-bold"><%= standing.email.split('@').first %></td>
+                  <td><%= standing.handicap %></td>
+                  <td class="fw-bold text-center"><span class="hero-color text-shadow"><%= standing.total_points %></span></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="fullBreakdownView" role="tabpanel" aria-labelledby="full-tab">
+        <div class="table-responsive">
+          <table class="table table-striped table-light table-bordered">
+            <thead>
+              <tr>
+                <th class="text-nowrap">Golfer</th>
+                <th class="text-center">Oct</th>
+                <th class="text-center">Nov</th>
+                <th class="text-center">Dec</th>
+                <th class="text-center">Jan</th>
+                <th class="text-center">Feb</th>
+                <th class="text-center">Total</th>
+                <th class="text-nowrap">Net</th>
+                <th class="text-nowrap">Total Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @standings.each do |standing| %>
+                <tr>
+                  <td><%= standing.email.split('@').first %></td>
+                  <td><%= standing.round_1 || 0 %>/<span class="fw-bold"><strong><%=standing.round_1_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_1_points || 0 %></span></strong></td>
+                  <td><%= standing.round_2 || 0 %>/<span class="fw-bold"><strong><%=standing.round_2_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_2_points || 0 %></span></strong></td>
+                  <td><%= standing.round_3 || 0 %>/<span class="fw-bold"><strong><%=standing.round_3_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_3_points || 0 %></span></strong></td>
+                  <td><%= standing.round_4 || 0 %>/<span class="fw-bold"><strong><%=standing.round_4_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_4_points || 0 %></span></strong></td>
+                  <td><%= standing.round_5 || 0 %>/<span class="fw-bold"><strong><%=standing.round_5_net || 0 %></strong></span>/<span class="fw-bold hero-color text-shadow"><strong><%= standing.round_5_points || 0 %></span></strong></td>
+                  <td class="text-center"><%= standing.total_score %></td>
+                  <% total_net = (standing.round_1_net || 0) + (standing.round_2_net || 0) + (standing.round_3_net || 0) +
+                         (standing.round_4_net || 0) + (standing.round_5_net || 0)%>
+                  <td class="text-center"><span class="fw-bold"><strong><%= total_net%></strong></span></td>
+                  <td class="fw-bold text-center"><strong><span class="hero-color text-shadow"><%= standing.total_points %></strong></span></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<div class="card m-4 shadow-lg border-success">
+<%#
+<div class="card shadow-lg border-dark mt-3">
   <div class="card-header d-flex justify-content-center hero-color3 text-white">
     <h2>Deets</h2>
   </div>
@@ -68,3 +105,69 @@
       <li>Ties split points</li>
     </ul>
   </div>
+%>
+<div class="card border-dark mb-3 shadow">
+  <div class="card-header d-flex justify-content-center text-center hero-color3 text-white">
+    <h5 class="mb-0">League Rules & Payouts</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text fw-bold text-success">
+      <i class="fas fa-money-bill-wave"></i> **$150** entry fee.<br>
+      <i class="fas fa-trophy"></i>
+      **Top 4** make Matchplay Playoffs.
+    </p>
+    <button class=" btn-sm success-btn w-100 mt-2" type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#leagueDetailsCollapse" 
+            aria-expanded="false" 
+            aria-controls="leagueDetailsCollapse">
+      View Full Rules and Breakdown
+    </button>
+    <div class="collapse mt-3" id="leagueDetailsCollapse">
+      <ul class="nav nav-tabs" id="detailsTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="payout-tab" data-bs-toggle="tab" data-bs-target="#payout" type="button" role="tab" aria-controls="payout" aria-selected="true">Payout</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="rules-tab" data-bs-toggle="tab" data-bs-target="#rules" type="button" role="tab" aria-controls="rules" aria-selected="false">Rules</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="points-tab" data-bs-toggle="tab" data-bs-target="#points" type="button" role="tab" aria-controls="points" aria-selected="false">Points Breakdown</button>
+        </li>
+      </ul>
+      <div class="tab-content border border-top-0 p-3" id="detailsTabContent">
+        <div class="tab-pane fade show active" id="payout" role="tabpanel" aria-labelledby="payout-tab">
+          <p class="fw-bold">Prize Money Details:</p>
+          <ul>
+            <li>Entry fee is **$150**</li>
+            <li>Reg season winner gets **$150**</li>
+            <li>Playoff winner gets remaining $$$ minus website cost ~ $50</li>
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="rules" role="tabpanel" aria-labelledby="rules-tab">
+          <p class="fw-bold">Season Structure:</p>
+          <ul>
+            <li>Reg Season lasts 5 months/rounds</li>
+            <li>Top 4 make Matchplay Playoffs</li>
+            <li>1 plays 4 / 2 plays 3</li>
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="points" role="tabpanel" aria-labelledby="points-tab">
+          <p class="fw-bold">Points Breakdown per Round:</p>
+          <ul>
+            <li>1st place - 6</li>
+            <li>2nd place - 5</li>
+            <li>3rd place - 4</li>
+            <li>4th place - 3</li>
+            <li>5th place - 2</li>
+            <li>6th place - 1</li>
+            <li>7th & below - 0</li>
+          </ul>
+          <ul>
+            <li>**Ties split points**</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

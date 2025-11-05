@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, a {
   font-family: 'Nunito Sans', sans-serif;
 }
 .hero-color {
-  color: #1785cf;
+  color: #2acab8;
 }
 .hero-border {
   border-color: #1786cf;
@@ -31,8 +31,34 @@ h1, h2, h3, h4, h5, a {
   background-color: #234C6A;
 }
 .card-header.hero-color3 {
- background-color: #456882;
+ background-color: #3d4850;
 }
 .hero-color4 {
   background-color: #E9DAD1;
 }
+.active-link {
+  background-color: #2acab8 !important;
+  font-color: white;
+}
+.success-btn {
+  background-color: #2acab8;
+  color: black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+}
+.warning-btn {
+  background-color: #9f7c08;
+  color: black;
+  border-radius: 5px;
+  padding: 4px 8px;
+  border: none;
+}
+.nav-pills .nav-link.active {
+  background-color: var(--hero-color-bg, #2acab8) !important; /* Use your color */
+  color: var(--hero-color-text, #333) !important; /* Set text color */
+}
+.nav-pills .nav-link {
+  /* Set the text color for inactive tabs */
+  color: #2acab8; /* A light grey for contrast against a dark background */
+} 

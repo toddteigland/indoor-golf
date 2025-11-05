@@ -5,7 +5,7 @@
   <div class="card-body">
     <% if @scores.empty? %>
       <h4>Please play a round and enter your score</h4>
-      <%= button_to 'New Score', new_score_path, method: :get, class:"btn btn-success m-2" %>
+      <%= button_to 'New Score', new_score_path, method: :get, class:"success-btn m-2" %>
     <% else %>
       <div class="table-responsive mb-4">
         <table class="table table-bordered">
