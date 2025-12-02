@@ -4,7 +4,8 @@
       <%= link_to 'INDOOR GOLF', root_path, class: 'text-decoration-none text-white ps-3 ' %> <!-- Link to standings page when logged in -->
     <% else %>
       <%= link_to 'INDOOR GOLF', new_user_session_path, class: 'text-decoration-none text-white' %> <!-- Link to login page when not logged in -->
-    <% end %>  </h1>
+    <% end %>
+  </h1>
   <button class='btn' data-bs-toggle="offcanvas" type="button" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-label="Open/Close menu">
     <i class="fa-solid fa-golf-ball fa-3x hero-color" style="", aria-hidden="true"></i>
   </button>
@@ -40,7 +41,7 @@
     </div>
   </ul>
   <% if user_signed_in? %>
-    <div class="custom-height offcanvas offcanvas-end border-dark rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas offcanvas-end border-dark rounded-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header" style="background-color: #3d4850">
         <h3 style="color:#fff"><%= current_user.email %></h3>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close", style="color:#fff"></button>

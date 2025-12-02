@@ -7,7 +7,7 @@
     end
 
     def playoffs
-      if @standings = nil || @standings.size < 4
+      if @standings.nil?|| @standings.size < 4
         return flash.now[:alert] = "Not enough players qualified for playoffs."
       end
 
