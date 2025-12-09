@@ -85,17 +85,19 @@
           .group('users.id')
       end
       
-      def set_standings
-        @standings = calculate_standings.sort_by do |user|
-          (user.round_1_points || 0) + 
-          (user.round_2_points || 0) + 
-          (user.round_3_points || 0) + 
-          (user.round_4_points || 0) + 
-          (user.round_5_points || 0) + 
-          (user.round_6_points || 0)
-        end.reverse
-      end
-      
-      
 
-    end
+      def set_standings
+          @standings = calculate_standings.sort_by do |user|
+            [
+              -(user.total_points || 0),   # primary: total points (descending)
+              (user.round_1_net || 0) +    # secondary: sum of net scores (ascending = lower is better)
+              (user.round_2_net || 0) +
+              (user.round_3_net || 0) +
+              (user.round_4_net || 0) +
+              (user.round_5_net || 0) +
+              (user.round_6_net || 0),
+              user.total_score || 0        # tertiary: total raw score (ascending = lower is better)
+            ]
+          end
+        end
+      end

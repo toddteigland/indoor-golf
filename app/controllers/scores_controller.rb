@@ -81,7 +81,9 @@ class ScoresController < ApplicationController
 
   private
 #-----------------------------------------------------------------------------------------------------------------------------
-  
+
+#-----------------------------------------------------------------------------------------------------------------------------
+
   # def caluclate_net(score)
   #   #if round = 1, net score is score - (handicap * .778), any other round is score - handicap
   #   if score.round.round_number === 1 

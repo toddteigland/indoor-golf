@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_recent_scores
   helper_method :admin?
 
   
@@ -14,5 +15,10 @@ class ApplicationController < ActionController::Base
     current_user && current_user.email == "toddteigland@gmail.com"
   end
 
+    private
+
+  def set_recent_scores
+    @recent_scores = Score.order(created_at: :desc).limit(10).includes(:user, :round)
+  end
 
 end

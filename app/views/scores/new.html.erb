@@ -1,9 +1,9 @@
 <% if notice.present? %>
   <p style="color: green"><%= notice %></p>
 <% end %>
-<div class="card shadow  border-dark">
-  <div class="card-header d-flex justify-content-center hero-color3 text-white">
-    <h3>New Score</h3>
+<div class="card glass-card">
+  <div class="card-header d-flex flex-column text-center hero-color3 text-white p-2">
+    <h2 class="m-0">New Score</h2>
   </div>
   <div class="card-body">
     <% if @score.errors.any? %>

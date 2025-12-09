@@ -17,6 +17,20 @@
     <div class="container-fluid pb-2">
       <div class="container">
         <%= yield %>
+        <% if @recent_scores.present? %>
+          <div class="score-ticker">
+            <div class="ticker-content">
+              <div class="d-flex flex-row">
+                <h3 class="text-white me-4">Recent Scores:</h3>
+                <% @recent_scores.each do |score| %>
+                  <span class="ticker-item">
+                    <%= score.user.email.split('@').first %> — <%= score.net_score %> on <%= score.round.course %>
+                  </span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

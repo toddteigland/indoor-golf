@@ -1,11 +1,30 @@
-/* a.active {
-  border-color: #1785cf !important;
-}
-.custom-height {
-  height: 35% !important;
-} */
 .header-gradient {
   background-color: #2b2e31; /* Fallback */
   background-image: linear-gradient(.25turn, #2b2e31, 70%, #515d66);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
+
+/* Inactive nav links: frosted glass look */
+.nav .nav-link {
+  background: rgba(255, 255, 255, 0.2);   /* translucent layer */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* color: #2acab8; hero color text */
+  transition: all 0.3s ease;
+}
+.nav .nav-link:hover {
+  text-shadow: black;
+  color: yellow;
+}
+
+/* Active nav link: solid hero color, no blur */
+.nav .nav-link.active,
+.active-link {
+  background-color: var(--hero-color) !important;
+  color: #fff !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
