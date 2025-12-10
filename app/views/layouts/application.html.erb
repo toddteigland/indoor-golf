@@ -19,15 +19,32 @@
         <%= yield %>
         <% if @recent_scores.present? %>
           <div class="score-ticker">
-            <div class="ticker-content">
-              <div class="d-flex flex-row">
-                <h3 class="text-white me-4">Recent Scores:</h3>
-                <% @recent_scores.each do |score| %>
-                  <span class="ticker-item">
-                    <%= score.user.email.split('@').first %> — <%= score.net_score %> on <%= score.round.course %>
-                  </span>
-                <% end %>
-              </div>
+            <div class="ticker-content d-flex align-items-center">
+              <h3 class="text-white me-4">Recent <br>
+                Scores:</h3>
+              <% @recent_scores.take(6).each do |score| %>
+                <div class="ticker-player ">
+                  <!-- Top row: Name + Handicap | Divider | Final Score -->
+                  <div class="d-flex align-items-center">
+                    <!-- Left: Name + Handicap -->
+                    <div class="d-flex flex-column text-white text-end pe-3">
+                      <strong><%= score.user.email.split('@').first %></strong>
+                      <small class="text-white-50">Handicap: <%= score.user.handicap %></small>
+                    </div>
+                    <!-- Divider -->
+                    <div class="vr mx-3 bg-white opacity-50"></div>
+                    <!-- Right: Final Score -->
+                    <div class="d-flex flex-column text-white text-center ps-2">
+                      <small class="text-white-50">Final</small>
+                      <strong><%= score.net_score %></strong>
+                    </div>
+                  </div>
+                  <!-- Bottom row: Course name spanning full width -->
+                  <div class="text-center">
+                    <small class="text-white-50"><%= score.round.course %></small>
+                  </div>
+                </div>
+              <% end %>
             </div>
           </div>
         <% end %>
